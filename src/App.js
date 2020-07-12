@@ -1,25 +1,49 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Provider } from 'react-redux';
 
-function App() {
+import generateStore from './redux/store';
+
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
+
+import Login from './components/login/login';
+import Signup from './components/signup/signup';
+import Uiuser from './components/ui/index';
+import Example from './example';
+
+const App = () => {
+
+  const store = generateStore();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store} className="container " >
+      <Router>
+        <div className="container mt-5">
+          <Switch>
+
+            <Route path="/login" exact>
+              <Login />
+            </Route>
+
+            <Route path="/signup">
+              <Signup />
+            </Route>
+
+            <Route path="/example">
+              <Example />
+            </Route>
+
+            <Route path="/">
+              <Uiuser />
+            </Route>
+
+          </Switch>
+        </div>
+      </Router>
+    </Provider>
   );
 }
 
