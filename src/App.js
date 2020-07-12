@@ -12,7 +12,6 @@ import {
 import Login from './components/login/login';
 import Signup from './components/signup/signup';
 import Uiuser from './components/ui/index';
-import Example from './example';
 
 const App = () => {
 
@@ -30,10 +29,6 @@ const App = () => {
 
             <Route path="/signup">
               <Signup />
-            </Route>
-
-            <Route path="/example">
-              <Example />
             </Route>
 
             <Route path="/">
